@@ -282,7 +282,10 @@ Nhập lựa chọn của bạn: """)
                         return
                 case "2":
                     found = False
-                    search_table_number = int(input("Nhập số bàn cần tìm: "))
+                    try:
+                        search_table_number = int(input("Nhập số bàn cần tìm: "))
+                    except:
+                        print("Dữ liệu không hợp lệ")
                     if not search_table_number:
                         print("Tên khách hàng hoặc số bàn không được để trống")
                         return
@@ -297,7 +300,7 @@ Nhập lựa chọn của bạn: """)
                         f"{'Tổng tiền hóa đơn':20} | "
                         f"{'Phân loại hóa đơn'}")
                     for item in self.bills:
-                        if search_table_number in item.table_number:
+                        if search_table_number == item.table_number:
                             found = True
                             print(
                                 f"{item.id:<10} | "
